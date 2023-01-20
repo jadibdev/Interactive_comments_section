@@ -5,6 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { red } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Typography, Paper } from '@mui/material';
+import Comment from './Comment';
+
 
 
 const theme = createTheme({
@@ -31,16 +33,8 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Paper sx={{backgroundColor: 'main.lightGrayishBlue'}}>
-        <Typography variant="h1" gutterBottom >
-          h1. Heading
-        </Typography>
-        <Typography variant="h1" gutterBottom >
-          h1. Heading
-        </Typography>
-        <Typography variant="h1" gutterBottom >
-          h1. Heading
-        </Typography>
+        <Paper sx={{backgroundColor: 'neutral.veryLightGray', py: '20px', px: '20px'}}>
+          <Comment sx={{ my: '20px'}}/>
         </Paper>
       </ThemeProvider>
     </>
