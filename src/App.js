@@ -6,6 +6,9 @@ import { red } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Typography, Paper } from '@mui/material';
 import Comment from './Comment';
+import comments from './data.json';
+import { useState } from 'react';
+
 
 
 
@@ -34,7 +37,18 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Paper sx={{backgroundColor: 'neutral.veryLightGray', py: '20px', px: '20px'}}>
-          <Comment sx={{ my: '20px'}}/>
+        {comments.comments.map((comment) => {
+          return (
+            <Comment
+                    key={comment.id}
+                    score={comment.score}
+                    image={require(`${comment.user.image.png}`)}
+                    username={comment.user.username}
+                    createdAt={comment.createdAt}
+                    content={comment.content}
+                  />
+          )
+        })}
         </Paper>
       </ThemeProvider>
     </>
