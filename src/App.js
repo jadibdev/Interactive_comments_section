@@ -71,7 +71,8 @@ function App() {
                     image={require(`${reply.user.image.png}`)}
                     username={reply.user.username}
                     createdAt={reply.createdAt}
-                    content={reply.content} 
+                    content={reply.content}
+                    replyingTo={reply.replyingTo}
                   />
                 )
               })}
