@@ -27,7 +27,7 @@ export default function BasicCard(props) {
             </Container>
             <Container>
                 <Typography  sx={{color: '#71797E', mt: '10px' }}>
-                    @{props.replyingTo} {props.content}
+                    <span style={{ color: '#4448C5',  fontSize: '16px', fontWeight: 'bold'}}>@{props.replyingTo}</span> {props.content}
                 </Typography>
             </Container>
         </Box>

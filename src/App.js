@@ -39,12 +39,11 @@ function App() {
         <CssBaseline />
         <Paper sx={{backgroundColor: 'neutral.veryLightGray', py: '20px', px: '20px'}}>
 
-        {comments.comments.map((comment) => {
-          console.log(comment.replies)
+        {comments.comments.map((comment, index) => {
           if (comment.replies.length === 0) {
             return (
               <Comment
-                      key={comment.id}
+                      key={index}
                       score={comment.score}
                       image={require(`${comment.user.image.png}`)}
                       username={comment.user.username}
@@ -56,17 +55,17 @@ function App() {
             return (
               <>
               <Comment
-                      key={comment.id}
+                      key={index}
                       score={comment.score}
                       image={require(`${comment.user.image.png}`)}
                       username={comment.user.username}
                       createdAt={comment.createdAt}
                       content={comment.content}
                     />
-              {comment.replies.map((reply) => {
+              {comment.replies.map((reply, index) => {
                 return (
                   <Reply
-                    key={reply.id}
+                    key={index}
                     score={reply.score}
                     image={require(`${reply.user.image.png}`)}
                     username={reply.user.username}
