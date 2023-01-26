@@ -9,7 +9,7 @@ import Comment from './Comment';
 import data from './data.json';
 import Reply from './Reply'
 import { useState } from 'react';
-import CurrentUser from './CurrentUser';
+import CurrentUser from './CurrentUserComment';
 import CurrentUserReply from './CurrentUserReply';
 
 
