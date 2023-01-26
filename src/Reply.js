@@ -13,7 +13,8 @@ import plusIcon from './images/icon-plus.svg'
 export default function BasicCard(props) {
   return (
     // at desktop viewport change flex direction of card:  display: 'flex', flexDirection: 'row-reverse'
-    <Card sx={{ minWidth: 275, mb: '20px', borderRadius: '10px' }}>
+    <Box sx={{borderLeft: '1px solid lightgray'}}>
+        <Card sx={{ minWidth: 275, mb: '20px', borderRadius: '10px', ml: '1rem' }}>
       <CardContent sx={{ px: '0.5rem', py: '0.8rem'}}>
         <Box>
             <Container sx={{ display: 'flex', gap: '10px', alignItems: 'center'}}>
@@ -62,5 +63,6 @@ export default function BasicCard(props) {
         </Container>
       </CardActions>
     </Card>
+    </Box>
   );
 }
