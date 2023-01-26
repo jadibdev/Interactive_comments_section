@@ -6,9 +6,11 @@ import { red } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Typography, Paper } from '@mui/material';
 import Comment from './Comment';
-import comments from './data.json';
+import data from './data.json';
 import Reply from './Reply'
 import { useState } from 'react';
+import CurrentUser from './CurrentUser';
+import CurrentUserReply from './CurrentUserReply';
 
 
 
@@ -33,53 +35,81 @@ const theme = createTheme({
 
 
 function App() {
+  let currentUser = data.currentUser.username
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Paper sx={{backgroundColor: 'neutral.veryLightGray', py: '20px', px: '20px'}}>
-
-        {comments.comments.map((comment) => {
-          console.log(comment.replies)
-          if (comment.replies.length === 0) {
-            return (
-              <Comment
-                      key={comment.id}
-                      score={comment.score}
-                      image={require(`${comment.user.image.png}`)}
-                      username={comment.user.username}
-                      createdAt={comment.createdAt}
-                      content={comment.content}
-                    />
-            )
-          } else {
+          {data.comments.map((comment, index) => {
+            if (comment.user.username === currentUser) {
+              return (
+                <>
+                  <CurrentUser 
+                  key={comment.id}
+                  score={comment.score}
+                  image={require(`${comment.user.image.png}`)}
+                  username={comment.user.username}
+                  createdAt={comment.createdAt}
+                  content={comment.content}/>
+                  {comment.replies.map((reply, index) => {
+                    if(reply) {
+                      return (
+                        <Reply 
+                          key={index}
+                          score={reply.score}
+                          image={require(`${reply.user.image.png}`)}
+                          username={reply.user.username}
+                          createdAt={reply.createdAt}
+                          content={reply.content} 
+                        />
+                      )
+                    }
+                  })}
+                </>
+              )
+            }
             return (
               <>
-              <Comment
-                      key={comment.id}
-                      score={comment.score}
-                      image={require(`${comment.user.image.png}`)}
-                      username={comment.user.username}
-                      createdAt={comment.createdAt}
-                      content={comment.content}
-                    />
-              {comment.replies.map((reply) => {
-                return (
-                  <Reply
-                    key={reply.id}
-                    score={reply.score}
-                    image={require(`${reply.user.image.png}`)}
-                    username={reply.user.username}
-                    createdAt={reply.createdAt}
-                    content={reply.content} 
-                  />
-                )
-              })}
-            </>
+                 <Comment 
+                  key={comment.id}
+                  score={comment.score}
+                  image={require(`${comment.user.image.png}`)}
+                  username={comment.user.username}
+                  createdAt={comment.createdAt}
+                  content={comment.content}/>
+                {comment.replies.map((reply, index) => {
+                    if(reply) {
+                      if (reply.user.username === currentUser) {
+                        return (
+                          <CurrentUserReply
+                            key={index}
+                            score={reply.score}
+                            image={require(`${reply.user.image.png}`)}
+                            username={reply.user.username}
+                            createdAt={reply.createdAt}
+                            content={reply.content}
+                            replyingTo={reply.replyingTo}
+                          />
+                        )
+                      }
+                      return (
+                        <Reply
+                            key={index}
+                            score={reply.score}
+                            image={require(`${reply.user.image.png}`)}
+                            username={reply.user.username}
+                            createdAt={reply.createdAt}
+                            content={reply.content}
+                            replyingTo={reply.replyingTo}
+                          />
+                      )
+                    }
+                  })}
+              </>
+              
             )
-          }
-            
-        })}
+          })}
         </Paper>
       </ThemeProvider>
     </>
