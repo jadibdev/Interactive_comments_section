@@ -5,12 +5,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { red } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Typography, Paper } from '@mui/material';
-import Comment from './Comment';
+import Comment from './components/Comment';
 import data from './data.json';
-import Reply from './Reply'
+import Reply from './components/Reply'
 import { useState } from 'react';
-import CurrentUser from './CurrentUserComment';
-import CurrentUserReply from './CurrentUserReply';
+import CurrentUser from './components/CurrentUserComment';
+import CurrentUserReply from './components/CurrentUserReply';
 
 
 

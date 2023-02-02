@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import { Container } from '@mui/system';
-import plusIcon from './images/icon-plus.svg'
+import plusIcon from '../images/icon-plus.svg'
 
 
 export default function CurrentUser(props) {

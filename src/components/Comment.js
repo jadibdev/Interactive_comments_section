@@ -6,22 +6,29 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import { Container } from '@mui/system';
-import plusIcon from './images/icon-plus.svg'
+import { Container, css } from '@mui/system';
+import plusIcon from '../images/icon-plus.svg';
+import { responsiveStyle } from '@mui/system';
 
+const useStyles = (props) => css({
+	padding: '20px',
+	margin: '0px',
+	[`@media (max-width: 375px)`]: {
+			display: 'none',
+	},
+});
 
-export default function Reply(props) {
+export default function Comment(props) {
+	const classes = useStyles();
   return (
     // at desktop viewport change flex direction of card:  display: 'flex', flexDirection: 'row-reverse'
-    <Box sx={{borderLeft: '1px solid lightgray'}}>
-        <Card sx={{ minWidth: 275, mb: '20px', borderRadius: '10px', ml: '1rem', '@media (min-width: 400px)': {
+    <Card sx={{ minWidth: 275, mb: '20px', borderRadius: '10px', '@media (min-width: 400px)': {
 			display: 'flex', 
 			flexDirection: 'row-reverse',
-            ml: '10rem',
-            mr: '8rem'
+			mx: '8rem'
 	}}}>
       <CardContent sx={{ px: '0.5rem', py: '0.8rem'}}>
-      <Box>
+        <Box>
             <Container sx={{ display: 'flex', gap: '10px', alignItems: 'center', paddingLeft: '0px'}}>
                 <Container sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
 									<Avatar alt="Amy Robson" src={props.image} />
@@ -43,16 +50,15 @@ export default function Reply(props) {
             </Container>
             <Container>
                 <Typography  sx={{color: '#71797E', mt: '10px' }}>
-                    <span style={{color: '#4448C5',  fontSize: '16px', fontWeight: 'bold'}}>@{props.replyingTo}</span> {props.content}
+                    {props.content}
                 </Typography>
             </Container>
         </Box>
       
-      
       </CardContent>
       {/*  at desktop view add the following to box: display: 'flex', flexDirection: 'column'*/}
       <CardActions sx={{ display: 'flex', mb: '10px' }}>
-      <Box sx={{ 
+        <Box sx={{ 
             borderRadius: '8px', 
             py: '2px', 
             px: '10px',
@@ -86,6 +92,5 @@ export default function Reply(props) {
         </Container>
       </CardActions>
     </Card>
-    </Box>
   );
 }
