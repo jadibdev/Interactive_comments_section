@@ -11,6 +11,8 @@ import Reply from './components/Reply'
 import { useState } from 'react';
 import CurrentUser from './components/CurrentUserComment';
 import CurrentUserReply from './components/CurrentUserReply';
+import AddComment from './components/AddComment';
+
 
 
 
@@ -36,6 +38,7 @@ const theme = createTheme({
 
 function App() {
   let currentUser = data.currentUser.username
+  let currentUserImage = data.currentUser.image.png
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -45,7 +48,7 @@ function App() {
             if (comment.user.username === currentUser) {
               return (
                 <>
-                  <CurrentUser 
+                  <CurrentUser a
                   key={comment.id}
                   score={comment.score}
                   image={require(`${comment.user.image.png}`)}
@@ -110,6 +113,7 @@ function App() {
               
             )
           })}
+          <AddComment currentUser={currentUser} image={require(`${currentUserImage}`)}/>
         </Paper>
       </ThemeProvider>
     </>
