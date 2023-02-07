@@ -20,19 +20,33 @@ const bull = (
 
 export default function AddComment(props) {
   return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Container sx={{display: 'flex', justifyContent: 'space-around', padding: '0px' }}>
-            <TextField fullWidth label="Add a comment" id="fullWidth" rows={3} multiline/>
+    <Card sx={{ minWidth: 275, borderRadius: '10px', '@media (min-width: 400px)': {
+      mx: '8rem'
+    }}}>
+      <CardContent sx={{'@media (min-width: 400px)': {
+        display: 'flex', 
+        flexDirection: 'row-reverse',
+        gap: '20px'
+	    }}}>
+        <Container sx={{display: 'flex', padding: '0px', gap: '20px'}}>
+            <TextField fullWidth label="Add a comment" id="fullWidth" rows={3} multiline sx={{
+        ".MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+          borderColor: "main.moderateBlue",
+        },
+      }}/>
+            <Button size="large" variant="contained" sx={{height: '50%', '@media (max-width: 400px)': {
+			display: 'none', 
+	}}}>Send</Button>
         </Container>
-        <Container sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Container sx={{display: 'flex', justifyContent: 'space-between', mt: '20px', paddingLeft: '0px', paddingRight: '0px', '@media (min-width: 400px)': {
+			width: '3%', 
+	}}}>
             <Avatar alt={props.currentUser} src={props.image} />
-            <Button size="large" variant="contained">Send</Button>
+            <Button size="large" variant="contained" sx={{'@media (min-width: 400px)': {
+			display: 'none', 
+	}}}>Send</Button>
         </Container>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }
