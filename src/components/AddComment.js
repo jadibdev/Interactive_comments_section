@@ -31,7 +31,7 @@ export default function AddComment(props) {
         <Container sx={{display: 'flex', padding: '0px', gap: '20px'}}>
             <TextField fullWidth label="Add a comment" id="fullWidth" rows={3} multiline sx={{
         ".MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-          borderColor: "main.moderateBlue",
+          borderColor: "main.veryLightGray",
         },
       }}/>
             <Button size="large" variant="contained" sx={{height: '50%', '@media (max-width: 400px)': {
