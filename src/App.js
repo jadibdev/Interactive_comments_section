@@ -12,6 +12,7 @@ import { useState } from 'react';
 import CurrentUser from './components/CurrentUserComment';
 import CurrentUserReply from './components/CurrentUserReply';
 import AddComment from './components/AddComment';
+import AddReply from './components/AddReply'
 
 
 
@@ -114,6 +115,7 @@ function App() {
             )
           })}
           <AddComment currentUser={currentUser} image={require(`${currentUserImage}`)}/>
+          <AddReply currentUser={currentUser} image={require(`${currentUserImage}`)}/>
         </Paper>
       </ThemeProvider>
     </>
